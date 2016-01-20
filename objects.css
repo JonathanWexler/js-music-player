@@ -1,0 +1,70 @@
+/*Css for Jukebox*/
+
+.center{
+    margin: 0 auto;
+    width: 600px;
+}
+.text-center{
+    text-align: center;
+}
+
+.juke-body {
+    height: 300px;
+    float: left;
+
+}
+.juke-top {
+    height: 100px;
+    float: left;
+    border-top-left-radius: 3em;
+    border-top-right-radius: 3em;
+}
+
+.outside {
+    width: 150px;
+    background-color: #05bcf2;
+    margin: 0 atuo;
+}
+
+.middle {
+    width: 300px;
+    background-color: #0360ff;
+}
+
+.light{
+    position: absolute;
+    background-color: #0085ff;
+    animation: 1s bounce step-end infinite;
+}
+
+@keyframes "bounce" {
+  from, to {
+    margin-top: 40px;
+    margin-left: 35px;
+    border-radius: 3em;
+    min-width: 80px;
+    min-height: 80px;
+}
+80% {
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-top: -10px;
+    border-radius: 13em;
+    box-shadow: 0px 15px 35px 5px ;
+    background-color: #0051ff;
+    min-width: 120px;
+    min-height: 120px;
+}
+}
+
+#all-songs{
+    position:absolute;
+    top: 500px;
+    width:600px;
+}
+
+.song{
+    background-color: #09e5d5;
+    padding: 40px;
+    border: solid;
+}
