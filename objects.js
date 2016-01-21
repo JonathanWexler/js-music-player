@@ -1,68 +1,38 @@
-  
-$(document).ready(function(){
+  $(document).ready(function(){
+    console.log("OK");
 
-    var the_songs = ["mp3/1.mp3", "mp3/2.mp3", "mp3/3.mp3"]
-    var j = new JukeBox(the_songs);
-
-    console.log(j.songs);
+    var j = new JukeBox(setUp());
+    console.log("started");
     setSongs(j);
     j.play();
-
-    $('.song').click(function(){
-        console.log($(this).text());
-        $(this).fadeOut();
-        $('#song-list-end').after("<div class='song'>" + $(this).text()+ "</div>");
+    $(document).on('click', '.song', function(e) {
+        var elem = $(this)
+        elem.fadeOut(1000);
         j.next();
-    }); 
+        setTimeout(function(){
+            elem.remove();
+            $('#song-list-end').after("<div class='song'>" + elem.text()+ "</div>");
+        }, 2000);
 
-    $('.juke-body').click(function(){
+
+
+    });
+    // $('.song').click(function(){
+        // console.log($(this).text());
+
+    // }); 
+
+  $('.juke-body').click(function(){
         // var val = $(this).text();
         $(this).toggleClass('paused').promise().done(function(){
             $(this).hasClass('paused') ? j.resume() : j.stop();
-        });
-        
-        
+        }); 
     });
-
 });
 
-function setSongs (jb) {
-    for (var i = jb.songs.length - 1; i >= 0; i--) {
-        $('#song-list').after("<div class='song'>" + jb.songs[i] + "</div>");
-    };
+  function setUp () {
+    var the_songs = [];
+    var a = new Song("mp3/1.mp3", "Jaydiohead");
+    the_songs.push(a);
+    return the_songs;
 }
-
-function JukeBox (songs) {
-    this.songs = songs;
-    this.current = 0;
-    this.audio = new Audio(songs[this.current]);
-
-    this.play = function(){
-     this.audio = new Audio(songs[this.current]);
-     this.audio.play();
-    }
-    this.stop = function(){
-        this.audio.pause();
-    };
-this.resume = function(){
-    this.audio.play();
-}
-this.next = function(){
-    j.stop();
-    console.log(this.songs.length + "PLAYING" + this.increment());
-
-    this.play();
-};
-
-this.increment = function(){
-    if (++this.current >= this.songs.length) {
-        console.log("OVER");
-        this.current = 0;
-    };
-    return this.current;
-}
-}
-
-
-
-
