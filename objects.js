@@ -10,17 +10,13 @@
         elem.fadeOut(1000);
         j.next();
         setTimeout(function(){
-            elem.remove();
-            $('#song-list-end').after("<div class='song'>" + elem.text()+ "</div>");
+            elem.hide().insertAfter($('#song-list-end')).fadeIn("slow");
+            // elem.remove();
+            // $('#song-list-end').after("<div class='song'>" + elem.text()+ "</div>").hide().fadeIn();
         }, 2000);
 
-
-
     });
-    // $('.song').click(function(){
-        // console.log($(this).text());
 
-    // }); 
 
   $('.juke-body').click(function(){
         // var val = $(this).text();
